@@ -1,0 +1,27 @@
+<a href="twig-world.com">
+    <img src="http://twig.s3.amazonaws.com/images/email/signature/logos.jpg" alt="Twig World Ltd" border="0">
+</a>
+
+<p style="font-family: Helvetica, Arial, sans-serif; font-size: 12px; line-height:26px; color: rgb(102, 102, 102)">
+    <span style="font-weight: bold;">{{ request.session.full_name }}</span> | {{ request.session.job_title }}
+<br>
+
+<span id="mobile-input" style="color: rgb(102, 102, 102);" class="txt">T: {{ request.session.main_contact_number }} {% if request.session.additional_number %}| M: {{ request.session.additional_number }} {% endif %}
+
+    <br>
+
+{% if request.session.skype %}
+<a href="skype:{{ request.session.skype }}"><img src="http://twig.s3.amazonaws.com/images/email/signature/skype.png" alt="Skype"></a> | 
+{% endif %}
+<a href="https://twitter.com/TwigWorld"><img src="http://twig.s3.amazonaws.com/images/email/signature/twitter.png" alt="Twitter"></a>
+
+ | E: <a href="mailto:{{ request.session.email }}" style="color: rgb(223, 20, 109);">{{ request.session.email }}</a></p>
+
+
+
+<a href="twig-world.com" style="font-family: Helvetica, Arial, sans-serif; font-size: 16px; line-height:22px; color: rgb(223, 20, 109);">www.twig-world.com</a> 
+<span style="font-family: Helvetica, Arial, sans-serif; font-size: 12px; line-height:22px; color: rgb(102, 102, 102)"> <br> <img src="http://twig.s3.amazonaws.com/images/email/signature/bett-tiny-1.png" alt="Bett Award Winner"> Bett Award Winner 2012 / 2013 / 2014 </span>
+
+
+
+<p style="font-family: Helvetica, Arial, sans-serif; color: rgb(153, 153, 153); font-size: 10px; line-height: 14px;">This e-mail message may contain confidential or legally privileged information and is intended only for the use of the intended recipient(s). Any unauthorized disclosure, dissemination, distribution, copying or the taking of any action in reliance on the information herein is prohibited. E-mails are not secure and cannot be guaranteed to be error free as they can be intercepted, amended, or contain viruses.  Anyone who communicates with us by e-mail is deemed to have accepted these risks. Twig World Ltd is not responsible for errors or omissions in this message and denies any responsibility for any damage arising from the use of e-mail.  Any opinion and other statement contained in this message and any attachment are solely those of the author and do not necessarily represent those of the company.</p>
