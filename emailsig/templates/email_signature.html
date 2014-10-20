@@ -1,8 +1,8 @@
 <a style="text-decoration:none;" href="http://www.twig-world.com">
-    <img src="http://twig.s3.amazonaws.com/images/email/signature/twig_logo.jpg" alt="Twig World Ltd" border="0">
+    <img src="https://twig.s3.amazonaws.com/images/email/signature/twig_logo.jpg" alt="Twig World Ltd" border="0">
 </a>
 <a style="text-decoration:none;" href="http://www.tigtagworld.com">
-    <img src="http://twig.s3.amazonaws.com/images/email/signature/tigtag_logo.jpg" alt="Tigtag" border="0">
+    <img src="https://twig.s3.amazonaws.com/images/email/signature/tigtag_logo.jpg" alt="Tigtag" border="0">
 </a>
 <p style="font-family: Helvetica, Arial, sans-serif; font-size: 12px; line-height:26px; color: rgb(102, 102, 102)">
     <span style="font-weight: bold;">{{ request.session.full_name }}</span> | {{ request.session.job_title }}
@@ -13,9 +13,9 @@
     <br>
 
 {% if request.session.skype %}
-<a href="skype:{{ request.session.skype }}"><img src="http://twig.s3.amazonaws.com/images/email/signature/skype.png" alt="Skype"></a> | 
+<a href="skype:{{ request.session.skype }}"><img src="https://twig.s3.amazonaws.com/images/email/signature/skype.png" alt="Skype"></a> | 
 {% endif %}
-<a href="https://twitter.com/TwigWorld"><img src="http://twig.s3.amazonaws.com/images/email/signature/twitter.png" alt="Twitter"></a>
+<a href="https://twitter.com/TwigWorld"><img src="https://twig.s3.amazonaws.com/images/email/signature/twitter.png" alt="Twitter"></a>
 
  | E: <a href="mailto:{{ request.session.email }}" style="color: rgb(223, 20, 109);">{{ request.session.email }}</a></p>
 
