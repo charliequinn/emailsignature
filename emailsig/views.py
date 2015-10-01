@@ -20,5 +20,21 @@ class GenerateSignatureView(FormView):
         return super(GenerateSignatureView, self).form_valid(form)
 
 
+class GenerateABSignatureView(GenerateSignatureView):
+    success_url = reverse_lazy('email_signature_ab_ready')
+
+
+class GenerateRBSignatureView(GenerateSignatureView):
+    success_url = reverse_lazy('email_signature_rb_ready')
+
+
 class DisplayEmailSignatureView(TemplateView):
     template_name = 'email_signature.html'
+
+
+class DisplayABEmailSignatureView(TemplateView):
+    template_name = 'email_signature_ab.html'
+
+
+class DisplayRBEmailSignatureView(TemplateView):
+    template_name = 'email_signature_rb.html'
