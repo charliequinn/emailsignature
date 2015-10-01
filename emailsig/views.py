@@ -20,11 +20,11 @@ class GenerateSignatureView(FormView):
         return super(GenerateSignatureView, self).form_valid(form)
 
 
-class GenerateABSignatureView(GenerateSignatureView):
+class GenerateSignatureABView(GenerateSignatureView):
     success_url = reverse_lazy('email_signature_ab_ready')
 
 
-class GenerateRBSignatureView(GenerateSignatureView):
+class GenerateSignatureRBView(GenerateSignatureView):
     success_url = reverse_lazy('email_signature_rb_ready')
 
 
