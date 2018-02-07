@@ -1,7 +1,17 @@
-<h1>Twig email signature generator</h1>
-
-<form action="{% url 'detail' %}" method="post">
+{% extends "base.html" %}
+{% load bootstrap %}
+{% block content %}
+<div class="container-fluid" style="text-align: center; height:100%; width: 100%;background-color:#d9d9d9;">
+<div class="container" style="background-color:white; width:41.5%;height:100%; ">
+<h1 style="text-align: center;">Twig email signature generator</h1>
+<br>
+<br>
+<form action="{% url 'detail' %}" method="post" style="width:65%; display: inline-block; text-align: left;">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit" />
+    {{ form | bootstrap}}
+	<br>
+    <input type="submit" value="Submit" class="btn btn-info btn-block"/>
 </form>
+</div>
+</div>
+{% endblock %}

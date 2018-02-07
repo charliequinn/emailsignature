@@ -1,7 +1,1 @@
-<h1>Twig Commercial/Operations email signature generator</h1>
-
-<form action="{% url 'rb_detail' %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit" />
-</form>
+{% extends "index.html" %}

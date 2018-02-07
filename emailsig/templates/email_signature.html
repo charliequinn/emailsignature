@@ -1,22 +1,68 @@
-<a style="text-decoration:none; line-height:8px;" href="http://www.twig-world.com">
-    <img src="https://twig.s3.amazonaws.com/images/email/signature/twig_logo.jpg" alt="Twig World Ltd" border="0">
-</a>
-<a style="text-decoration:none; line-height:8px;" href="http://www.tigtagworld.com">
-    <img src="https://twig.s3.amazonaws.com/images/email/signature/tigtag_logo.jpg" alt="Tigtag" border="0">
-</a>
-<p style="font-family: Helvetica, Arial, sans-serif; font-size: 12px; line-height:24px; color: rgb(102, 102, 102)">
-    <span style="font-weight: bold;">{{ request.session.full_name }}</span> | {{ request.session.job_title }}
+{% extends "base.html" %} {% block content %}
+                        <table style="font-family: Helvetica, Arial;">
+                            <tr>
+                                <td width="140" style="vertical-align: top;" rowspan="2" colspan="2">
+                                    <a style="text-decoration:none; line-height:8px;" href="http://www.twigeducation.com/"><img src="http://res.cloudinary.com/dodge7ws8/image/upload/v1517829002/email-signature/resized/72dpi/twig_ed_h160_72dpi.png" height="56" alt="Twig Education" /></a>
+                                </td>
+                                <td width="15" colspan="1" rowspan="2" style="border-right: 1px solid !important">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td width="15" colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			                    <td colspan="2" rowspan="1"  height="28" style="font-size: 18px; color: #5C5C5C; font-weight: bold; vertical-align: top;">
+                                    {% if request.session.full_name %}{{ request.session.full_name|title }}{% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="15" colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            	<td colspan="2" rowspan="1" height="28" style="font-size: 18px; color: #5C5C5C; font-weight: bold; vertical-align: top;">
+                                    <p style="font-size: 14px;vertical-align: bottom;"> {% if request.session.job_title %}{{ request.session.job_title|title }}{% endif %} </p>
+                                </td>
+                            </tr>
+                            <tr style="font-size: 3px">
+                				<td  width="160" colspan="3" height="12" style="border-right: 1px solid !important">&nbsp;</td>
+                				<td  width="160" colspan="3" height="12">&nbsp;</td>
+                			</tr>
+                            <tr>
+                                <td width="160" colspan="3" style="border-right: 1px solid !important">&nbsp;</td>
+                                <td width="15" colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    			<td style="font-size: 12px; color: #5C5C5C; vertical-align: bottom;" colspan="2" height="22">
+                                    {% if request.session.main_contact_number %}{{ request.session.main_contact_number }}{% endif %}{% if request.session.additional_number and request.session.main_contact_number %}&nbsp;|&nbsp;{% endif %}{% if request.session.additional_number %}{{ request.session.additional_number }}{% endif %}
+                                </td>
+                    		</tr>
+             
+                            <tr>
+                                <td width="160" colspan="3" style="border-right: 1px solid !important">&nbsp;</td>
+                                <td width="15" colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    			   <td style="font-size: 12px; color: #5C5C5C; vertical-align: bottom;" colspan="2" height="22">
+                                    {% if request.session.address_line_1%}{{ request.session.address_line_1 }}{% endif %}{% if request.session.address_line_1 and request.session.address_line_2 %}, {% endif %}{% if request.session.address_line_2%}{{ request.session.address_line_2 }}{% endif %}{% if request.session.address_line_2 and request.session.address_line_3 %}, {% endif %}{% if request.session.address_line_1 and request.session.address_line_3 and not request.session.address_line_2 %}, {% endif %}{% if request.session.address_line_3 %}{{ request.session.address_line_3 }}{% endif %}
+                                </td>
+                    		</tr>
+                            <tr>
+			                    <td style="vertical-align: bottom; text-align:right;" width="140" colspan="2" >
+                                    <a href="https://www.facebook.com/TwigWorld/"><img src="http://res.cloudinary.com/dodge7ws8/image/upload/v1517829002/email-signature/resized/72dpi/fb_62_72dpi.png" height="22" alt="Facebook"/></a>
+                                  <a href="https://twitter.com/TwigWorld"><img src="http://res.cloudinary.com/dodge7ws8/image/upload/v1517829002/email-signature/resized/72dpi/twitter_h62_72dpi.png" height="22" alt="Twitter"/></a>
+								 <a href="https://www.linkedin.com/company/1342611/"><img src="http://res.cloudinary.com/dodge7ws8/image/upload/v1517829002/email-signature/resized/72dpi/linkedin_h62_72dpi.png" height="22" alt="LinkedIn"/></a>
+                                 <a href="https://www.instagram.com/twig.world/"><img src="http://res.cloudinary.com/dodge7ws8/image/upload/v1517829002/email-signature/resized/72dpi/insta_h62_72dpi.png" height="22" alt="Instagram"/></a>
+                                </td>
+                                <td width="15" colspan="1" style="border-right: 1px solid !important">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td width="15" colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td colspan="2" style="font-size: 12px; color: #5C5C5C;vertical-align: bottom;">
+                                    {% if request.session.website%}
+                                    <a href="http://{{ request.session.website }}/">{{ request.session.website }}</a>{% endif %}
+                                </td>
+                            </tr>
+                           
+                			<tr style="font-size: 3px">
+                				<td  width="160" colspan="3" style="border-right: 1px solid !important">&nbsp;</td>
+                				<td  width="160" colspan="3">&nbsp;</td>
+                			</tr>
+                        </table>
 <br>
-
-<span id="mobile-input" style="color: rgb(102, 102, 102);" class="txt"><span style="font-weight:bold;">T:</span> {{ request.session.main_contact_number }} {% if request.session.additional_number %}| <span style="font-weight:bold;">M:</span> {{ request.session.additional_number }} {% endif %}
 <br>
-
-{% if request.session.skype %}
-
-<a href="skype:{{ request.session.skype }}"><img src="https://twig.s3.amazonaws.com/images/email/signature/skype.png" alt="Skype"></a>
-{% endif %}
-<a href="https://twitter.com/TwigWorld"><img src="https://twig.s3.amazonaws.com/images/email/signature/twitter.png" alt="Twitter"></a>
-
-<a href="http://www.twig-world.com"><img src="https://twig.s3.amazonaws.com/images/email/signature/web.png" alt="Twig"></a>
-
-<br> <a href="https://snipli.com/TwigEmailAd"><img src="https://twig.s3.amazonaws.com/images/email/signature/bett.png" alt=""></a>
+<hr>
+<div class="well" style="margin:5%">
+    Drag from the line above and upwards to select all elements.
+    <br /> Then, <b>'cmd'</b> + <b>'C'</b>
+    <br /> or <b>'Right mouse click'</b> + <b>'Select "Copy"'</b> to add it in your clipboard.
+    Finally, paste it into your email client's signature section. <br/>
+    -- <i><b>Note: </b> Clear your existing signature entirely or just create a new one</i> --
+</div>
+{% endblock %}
