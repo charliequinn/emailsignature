@@ -2,7 +2,7 @@
                         <table style="font-family: Helvetica, Arial;">
                             <tr>
                                 <td width="140" style="vertical-align: top;" rowspan="2" colspan="2">
-                                    <a style="text-decoration:none; line-height:8px;" href="http://www.twigeducation.com/"><img src="http://res.cloudinary.com/dodge7ws8/image/upload/v1517829002/email-signature/resized/72dpi/twig_ed_h160_72dpi.png" height="56" alt="Twig Education" /></a>
+                                    <a style="text-decoration:none; line-height:8px;" href="{% if request.session.location == 'usa' %}http://bit.ly/2Emqc0P{% else %}http://bit.ly/2ElrYPH{% endif %}"><img src="http://res.cloudinary.com/dodge7ws8/image/upload/v1517829002/email-signature/resized/72dpi/twig_ed_h160_72dpi.png" height="56" alt="Twig Education" /></a>
                                 </td>
                                 <td width="15" colspan="1" rowspan="2" style="border-right: 1px solid !important">&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                 <td width="15" colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -21,27 +21,38 @@
                 				<td  width="160" colspan="3" height="12">&nbsp;</td>
                 			</tr>
                             <tr>
+                                {% if request.session.website %}
                                 <td width="160" colspan="3" style="border-right: 1px solid !important">&nbsp;</td>
+                                {% else %}
+                                    {% if not request.session.address_line_1 and not request.session.address_line_2 and not request.session.address_line_3 %}
+                                        {% include "social_icons.html" %}
+                                        <td width="15" colspan="1" style="border-right: 1px solid !important">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                    {% else %}
+                                        <td width="160" colspan="3" style="border-right: 1px solid !important">&nbsp;</td>
+                                    {% endif %}
+                                {% endif %}
                                 <td width="15" colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     			<td style="font-size: 12px; color: #5C5C5C; vertical-align: bottom;" colspan="2" height="22">
                                     {% if request.session.main_contact_number %}{{ request.session.main_contact_number }}{% endif %}{% if request.session.additional_number and request.session.main_contact_number %}&nbsp;|&nbsp;{% endif %}{% if request.session.additional_number %}{{ request.session.additional_number }}{% endif %}
                                 </td>
                     		</tr>
-             
+                        {% if request.session.address_line_1 or request.session.address_line_2 or request.session.address_line_3 %}
                             <tr>
+                                {% if request.session.website %}
                                 <td width="160" colspan="3" style="border-right: 1px solid !important">&nbsp;</td>
+                                {% else %}
+                                    {% include "social_icons.html" %}
+                                    <td width="15" colspan="1" style="border-right: 1px solid !important">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                {% endif %}
                                 <td width="15" colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     			   <td style="font-size: 12px; color: #5C5C5C; vertical-align: bottom;" colspan="2" height="22">
                                     {% if request.session.address_line_1%}{{ request.session.address_line_1 }}{% endif %}{% if request.session.address_line_1 and request.session.address_line_2 %}, {% endif %}{% if request.session.address_line_2%}{{ request.session.address_line_2 }}{% endif %}{% if request.session.address_line_2 and request.session.address_line_3 %}, {% endif %}{% if request.session.address_line_1 and request.session.address_line_3 and not request.session.address_line_2 %}, {% endif %}{% if request.session.address_line_3 %}{{ request.session.address_line_3 }}{% endif %}
                                 </td>
                     		</tr>
+                        {% endif %}
+                        {% if request.session.website%}
                             <tr>
-			                    <td style="vertical-align: bottom; text-align:right;" width="140" colspan="2" >
-                                    <a href="https://www.facebook.com/TwigWorld/"><img src="http://res.cloudinary.com/dodge7ws8/image/upload/v1517829002/email-signature/resized/72dpi/fb_62_72dpi.png" height="22" alt="Facebook"/></a>
-                                  <a href="https://twitter.com/TwigWorld"><img src="http://res.cloudinary.com/dodge7ws8/image/upload/v1517829002/email-signature/resized/72dpi/twitter_h62_72dpi.png" height="22" alt="Twitter"/></a>
-								 <a href="https://www.linkedin.com/company/1342611/"><img src="http://res.cloudinary.com/dodge7ws8/image/upload/v1517829002/email-signature/resized/72dpi/linkedin_h62_72dpi.png" height="22" alt="LinkedIn"/></a>
-                                 <a href="https://www.instagram.com/twig.world/"><img src="http://res.cloudinary.com/dodge7ws8/image/upload/v1517829002/email-signature/resized/72dpi/insta_h62_72dpi.png" height="22" alt="Instagram"/></a>
-                                </td>
+			                    {% include "social_icons.html" %}
                                 <td width="15" colspan="1" style="border-right: 1px solid !important">&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                 <td width="15" colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                 <td colspan="2" style="font-size: 12px; color: #5C5C5C;vertical-align: bottom;">
@@ -49,7 +60,7 @@
                                     <a href="http://{{ request.session.website }}/">{{ request.session.website }}</a>{% endif %}
                                 </td>
                             </tr>
-                           
+                        {% endif %}
                 			<tr style="font-size: 3px">
                 				<td  width="160" colspan="3" style="border-right: 1px solid !important">&nbsp;</td>
                 				<td  width="160" colspan="3">&nbsp;</td>
